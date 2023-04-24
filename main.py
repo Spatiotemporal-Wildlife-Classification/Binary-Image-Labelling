@@ -79,7 +79,8 @@ if __name__ == "__main__":
     # Import dataframe
     df = aggregate_datasets(['proboscidia_final.csv', 'felids_final.csv'])
     df = remove_already_processed_observations(df)
-    print(df.head())
+    # Shuffle rows
+    df = df.sample(frac=1)
 
     # Generate id and url list
     ids, urls = generate_url_id_combinations(df)
