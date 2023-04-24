@@ -4,7 +4,7 @@ import requests
 import cv2
 
 binary_labels = {49: 'Present', 48: 'Absent'}
-dataset_name = 'proboscidia_final.csv'
+file_name = 'wildlife_presence.csv'
 data_path = 'data/'
 
 
@@ -25,20 +25,31 @@ def generate_url_id_combinations(df: pd.DataFrame):
     return ids, urls
 
 
+def remove_already_processed_observations(df: pd.DataFrame):
+    df_labelled = pd.read_csv(data_path + 'labelled/' + file_name)
+    labelled_ids = df_labelled['id'].tolist()
+
+    df = df.drop(labelled_ids)
+    return df
+
+
 def process(ids, urls):
     batch = 10
     batch_index = 0
+
     labels = []
+    processed_ids = []
 
     for id, url in zip(ids, urls):
         download_image(id, url)  # Download the image
         encoded_label = display_image(id)  # Display image
         label = binary_labels[encoded_label]  # Decode the label
         labels.append(label)  # Append the labels to a list
+        processed_ids.append(id)
         print(label)
 
         if batch_index == batch:
-            write_to_file(ids, labels)
+            write_to_file(processed_ids, labels)
             batch_index = 0
 
         batch_index += 1
@@ -48,8 +59,7 @@ def process(ids, urls):
 
 def write_to_file(ids, labels):
     results_df = pd.DataFrame({'id': ids, 'label': labels})
-    results_df.to_csv(data_path + 'labelled/' + 'wildlife_present.csv')
-
+    results_df.to_csv(data_path + 'labelled/' + file_name, mode='a', index=False, header=False)
 
 
 def display_image(id: str):
@@ -57,7 +67,6 @@ def display_image(id: str):
     cv2.imshow('Current image', img)
     key_pressed = cv2.waitKey(0)
     return key_pressed
-
 
 
 def download_image(id: str, url: str):
@@ -69,6 +78,7 @@ def download_image(id: str, url: str):
 if __name__ == "__main__":
     # Import dataframe
     df = aggregate_datasets(['proboscidia_final.csv', 'felids_final.csv'])
+    df = remove_already_processed_observations(df)
     print(df.head())
 
     # Generate id and url list
