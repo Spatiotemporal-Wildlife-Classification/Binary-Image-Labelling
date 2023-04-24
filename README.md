@@ -8,7 +8,7 @@ https://github.com/trav-d13/spatiotemporal_wildlife_classification.
 
 In order to use this simple program, simply execute the main method. 
 An image will be presented as a pop-up. Please select enter `1` for the positive case (Present/ Good), 
-or alternatively press 0 for the negative case (Absent/ Bad). 
+or alternatively press `0` for the negative case (Absent/ Bad). 
 
 ### Use cases
 #### Wildlife Presence Classifier
