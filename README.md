@@ -1,7 +1,8 @@
 # Binary Image Labelling
 A simple binary labelling processor for images downloaded through a URL. 
 
-## This repository serves as a functional Tool to aid in the the bachelor Thesis investigating the 
+## Info
+This repository serves as a functional Tool to aid in the the bachelor Thesis investigating the 
 capability of meta-data usage in combination with wildlife image classification. For more information please review 
 https://github.com/trav-d13/spatiotemporal_wildlife_classification.
 
