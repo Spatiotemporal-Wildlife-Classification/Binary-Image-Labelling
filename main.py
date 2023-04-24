@@ -26,11 +26,30 @@ def generate_url_id_combinations(df: pd.DataFrame):
 
 
 def process(ids, urls):
+    batch = 10
+    batch_index = 0
+    labels = []
+
     for id, url in zip(ids, urls):
         download_image(id, url)  # Download the image
         encoded_label = display_image(id)  # Display image
-        label = binary_labels[encoded_label]
+        label = binary_labels[encoded_label]  # Decode the label
+        labels.append(label)  # Append the labels to a list
         print(label)
+
+        if batch_index == batch:
+            write_to_file(ids, labels)
+            batch_index = 0
+
+        batch_index += 1
+
+    write_to_file(ids, labels)
+
+
+def write_to_file(ids, labels):
+    results_df = pd.DataFrame({'id': ids, 'label': labels})
+    results_df.to_csv(data_path + 'labelled/' + 'wildlife_present.csv')
+
 
 
 def display_image(id: str):
