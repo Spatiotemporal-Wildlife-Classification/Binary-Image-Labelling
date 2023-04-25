@@ -2,10 +2,13 @@ import pandas as pd
 import numpy as np
 import requests
 import cv2
+import shutil
+import sys
 
 binary_labels = {49: 'Present', 48: 'Absent'}
 file_name = 'wildlife_presence.csv'
 data_path = 'data/'
+root_path = sys.path[1]
 
 positive_count = 0
 negative_count = 0
@@ -32,21 +35,22 @@ def remove_already_processed_observations(df: pd.DataFrame):
     global positive_count, negative_count
     df_labelled = pd.read_csv(data_path + 'labelled/' + file_name)
     labelled_ids = df_labelled['id'].tolist()
+    df = df.drop(labelled_ids)
 
     # Update the positve and negative counts
-    counts = df_labelled['label'].value_counts().to_dict()
-    for label in counts.keys():
-        if label == binary_labels[49]:
-            positive_count = counts[label]
-        elif label == binary_labels[48]:
-            negative_count = counts[label]
+    if not df_labelled.empty:
+        counts = df_labelled['label'].value_counts().to_dict()
+        for label in counts.keys():
+            if label == binary_labels[49]:
+                positive_count = counts[label]
+            elif label == binary_labels[48]:
+                negative_count = counts[label]
 
-    df = df.drop(labelled_ids)
     return df
 
 
 def process(ids, urls):
-    batch = 10
+    batch = 5
     batch_index = 0
 
     labels = []
@@ -59,6 +63,7 @@ def process(ids, urls):
         labels.append(label)  # Append the labels to a list
         processed_ids.append(id)
         status_update(encoded_label)  # Status update
+        place_image_in_subdirectory(label, id)  # Format image directory sub-structure
 
         if batch_index == batch:
             write_to_file(processed_ids, labels)
@@ -67,6 +72,12 @@ def process(ids, urls):
         batch_index += 1
 
     write_to_file(ids, labels)
+
+
+def place_image_in_subdirectory(label: str, id):
+    current_dir = root_path + '/' + data_path + 'labelled/' + str(id) + '.jpg'
+    sub_dir = root_path + '/' + data_path + 'labelled/' + label + '/' + label + '_image_' + str(id) + '.jpg'
+    shutil.move(current_dir, sub_dir)
 
 
 def status_update(encoded_label: int):
@@ -81,7 +92,7 @@ def status_update(encoded_label: int):
 
 def write_to_file(ids, labels):
     results_df = pd.DataFrame({'id': ids, 'label': labels})
-    results_df.to_csv(data_path + 'labelled/' + file_name, mode='a', index=False, header=False)
+    results_df.to_csv(data_path + 'labelled/' + file_name, index=False, header=False)
 
 
 def display_image(id: str):
