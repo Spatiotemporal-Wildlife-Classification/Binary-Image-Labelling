@@ -7,6 +7,9 @@ binary_labels = {49: 'Present', 48: 'Absent'}
 file_name = 'wildlife_presence.csv'
 data_path = 'data/'
 
+positive_count = 0
+negative_count = 0
+
 
 # Aggregate multiple datasets
 def aggregate_datasets(datasets: list) -> pd.DataFrame:
@@ -26,8 +29,17 @@ def generate_url_id_combinations(df: pd.DataFrame):
 
 
 def remove_already_processed_observations(df: pd.DataFrame):
+    global positive_count, negative_count
     df_labelled = pd.read_csv(data_path + 'labelled/' + file_name)
     labelled_ids = df_labelled['id'].tolist()
+
+    # Update the positve and negative counts
+    counts = df_labelled['label'].value_counts().to_dict()
+    for label in counts.keys():
+        if label == binary_labels[49]:
+            positive_count = counts[label]
+        elif label == binary_labels[48]:
+            negative_count = counts[label]
 
     df = df.drop(labelled_ids)
     return df
@@ -46,7 +58,7 @@ def process(ids, urls):
         label = binary_labels[encoded_label]  # Decode the label
         labels.append(label)  # Append the labels to a list
         processed_ids.append(id)
-        print(label)
+        status_update(encoded_label)  # Status update
 
         if batch_index == batch:
             write_to_file(processed_ids, labels)
@@ -55,6 +67,16 @@ def process(ids, urls):
         batch_index += 1
 
     write_to_file(ids, labels)
+
+
+def status_update(encoded_label: int):
+    global positive_count, negative_count
+    if encoded_label == 49:
+        positive_count += 1
+    elif encoded_label == 48:
+        negative_count += 1
+    print(binary_labels[49] + ' count: ' + str(positive_count) + ', ' +
+          binary_labels[48] + ' count: ' + str(negative_count))
 
 
 def write_to_file(ids, labels):
