@@ -34,6 +34,7 @@ def generate_url_id_combinations(df: pd.DataFrame):
 def remove_already_processed_observations(df: pd.DataFrame):
     global positive_count, negative_count
     df_labelled = pd.read_csv(data_path + 'labelled/' + file_name)
+    print(df_labelled.head())
     labelled_ids = df_labelled['id'].tolist()
     df = df.drop(labelled_ids)
 
@@ -50,8 +51,6 @@ def remove_already_processed_observations(df: pd.DataFrame):
 
 
 def process(ids, urls):
-    batch = 5
-    batch_index = 0
 
     labels = []
     processed_ids = []
@@ -59,19 +58,16 @@ def process(ids, urls):
     for id, url in zip(ids, urls):
         download_image(id, url)  # Download the image
         encoded_label = display_image(id)  # Display image
-        label = binary_labels[encoded_label]  # Decode the label
+        try:
+            label = binary_labels[encoded_label]  # Decode the label
+        except:
+            write_to_file(processed_ids, labels)
+            sys.exit()
         labels.append(label)  # Append the labels to a list
         processed_ids.append(id)
         status_update(encoded_label)  # Status update
         place_image_in_subdirectory(label, id)  # Format image directory sub-structure
 
-        if batch_index == batch:
-            write_to_file(processed_ids, labels)
-            batch_index = 0
-
-        batch_index += 1
-
-    write_to_file(ids, labels)
 
 
 def place_image_in_subdirectory(label: str, id):
@@ -92,7 +88,7 @@ def status_update(encoded_label: int):
 
 def write_to_file(ids, labels):
     results_df = pd.DataFrame({'id': ids, 'label': labels})
-    results_df.to_csv(data_path + 'labelled/' + file_name, index=False, header=False)
+    results_df.to_csv(data_path + 'labelled/' + file_name, mode='a', index=False, header=False)
 
 
 def display_image(id: str):
