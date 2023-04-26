@@ -4,6 +4,7 @@ import requests
 import cv2
 import shutil
 import sys
+import random
 
 binary_labels = {49: 'Present', 48: 'Absent'}
 file_name = 'wildlife_presence.csv'
@@ -13,6 +14,7 @@ root_path = sys.path[1]
 positive_count = 0
 negative_count = 0
 
+test_split = 0.2
 
 # Aggregate multiple datasets
 def aggregate_datasets(datasets: list) -> pd.DataFrame:
@@ -69,11 +71,18 @@ def process(ids, urls):
         place_image_in_subdirectory(label, id)  # Format image directory sub-structure
 
 
-
 def place_image_in_subdirectory(label: str, id):
     current_dir = root_path + '/' + data_path + 'labelled/' + str(id) + '.jpg'
+
+    test_dir = root_path + '/' + data_path + 'labelled/test/' + label + '/' + label + '_image_' + str(id) + '.jpg'
     sub_dir = root_path + '/' + data_path + 'labelled/' + label + '/' + label + '_image_' + str(id) + '.jpg'
-    shutil.move(current_dir, sub_dir)
+
+    rand_value =  random.uniform(0, 1)
+    if rand_value > test_split:
+        shutil.move(current_dir, sub_dir)
+    else:
+        shutil.move(current_dir, test_dir)
+
 
 
 def status_update(encoded_label: int):
@@ -89,6 +98,8 @@ def status_update(encoded_label: int):
 def write_to_file(ids, labels):
     results_df = pd.DataFrame({'id': ids, 'label': labels})
     results_df.to_csv(data_path + 'labelled/' + file_name, mode='a', index=False, header=False)
+
+
 
 
 def display_image(id: str):
