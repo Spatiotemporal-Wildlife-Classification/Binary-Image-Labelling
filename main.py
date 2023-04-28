@@ -5,6 +5,7 @@ import cv2
 import shutil
 import sys
 import random
+import os
 
 binary_labels = {49: 'Present', 48: 'Absent'}
 file_name = 'wildlife_presence.csv'
@@ -13,8 +14,10 @@ root_path = sys.path[1]
 
 positive_count = 0
 negative_count = 0
+ignore_class = 'Present'
 
 test_split = 0.2
+
 
 # Aggregate multiple datasets
 def aggregate_datasets(datasets: list) -> pd.DataFrame:
@@ -65,10 +68,11 @@ def process(ids, urls):
         except:
             write_to_file(processed_ids, labels)
             sys.exit()
-        labels.append(label)  # Append the labels to a list
-        processed_ids.append(id)
-        status_update(encoded_label)  # Status update
-        place_image_in_subdirectory(label, id)  # Format image directory sub-structure
+        if label != ignore_class:
+            labels.append(label)  # Append the labels to a list
+            processed_ids.append(id)
+            status_update(encoded_label)  # Status update
+            place_image_in_subdirectory(label, id)  # Format image directory sub-structure
 
 
 def place_image_in_subdirectory(label: str, id):
@@ -82,7 +86,6 @@ def place_image_in_subdirectory(label: str, id):
         shutil.move(current_dir, sub_dir)
     else:
         shutil.move(current_dir, test_dir)
-
 
 
 def status_update(encoded_label: int):
