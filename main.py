@@ -100,8 +100,6 @@ def write_to_file(ids, labels):
     results_df.to_csv(data_path + 'labelled/' + file_name, mode='a', index=False, header=False)
 
 
-
-
 def display_image(id: str):
     img = cv2.imread(data_path + 'labelled/' + str(id) + '.jpg')
     cv2.imshow('Current image', img)
