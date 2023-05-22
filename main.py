@@ -7,14 +7,14 @@ import sys
 import random
 import os
 
-binary_labels = {49: 'Present', 48: 'Absent'}
+binary_labels = {49: 'Present', 48: 'Absent', 32: 'Ignore'}
 file_name = 'wildlife_presence.csv'
 data_path = 'data/'
 root_path = sys.path[1]
 
 positive_count = 0
 negative_count = 0
-ignore_class = 'Present'
+ignore_class = ''
 
 test_split = 0.2
 
@@ -68,7 +68,7 @@ def process(ids, urls):
         except:
             write_to_file(processed_ids, labels)
             sys.exit()
-        if label != ignore_class:
+        if label != ignore_class and label != 'Ignore':
             labels.append(label)  # Append the labels to a list
             processed_ids.append(id)
             status_update(encoded_label)  # Status update
