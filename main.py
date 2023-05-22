@@ -2,13 +2,21 @@ import pandas as pd
 import numpy as np
 import requests
 import cv2
+import shutil
+import sys
+import random
+import os
 
-binary_labels = {49: 'Present', 48: 'Absent'}
+binary_labels = {49: 'Present', 48: 'Absent', 32: 'Ignore'}
 file_name = 'wildlife_presence.csv'
 data_path = 'data/'
+root_path = sys.path[1]
 
 positive_count = 0
 negative_count = 0
+ignore_class = ''
+
+test_split = 0.2
 
 
 # Aggregate multiple datasets
@@ -31,23 +39,23 @@ def generate_url_id_combinations(df: pd.DataFrame):
 def remove_already_processed_observations(df: pd.DataFrame):
     global positive_count, negative_count
     df_labelled = pd.read_csv(data_path + 'labelled/' + file_name)
+    print(df_labelled.head())
     labelled_ids = df_labelled['id'].tolist()
+    df = df.drop(labelled_ids)
 
     # Update the positve and negative counts
-    counts = df_labelled['label'].value_counts().to_dict()
-    for label in counts.keys():
-        if label == binary_labels[49]:
-            positive_count = counts[label]
-        elif label == binary_labels[48]:
-            negative_count = counts[label]
+    if not df_labelled.empty:
+        counts = df_labelled['label'].value_counts().to_dict()
+        for label in counts.keys():
+            if label == binary_labels[49]:
+                positive_count = counts[label]
+            elif label == binary_labels[48]:
+                negative_count = counts[label]
 
-    df = df.drop(labelled_ids)
     return df
 
 
 def process(ids, urls):
-    batch = 10
-    batch_index = 0
 
     labels = []
     processed_ids = []
@@ -55,18 +63,29 @@ def process(ids, urls):
     for id, url in zip(ids, urls):
         download_image(id, url)  # Download the image
         encoded_label = display_image(id)  # Display image
-        label = binary_labels[encoded_label]  # Decode the label
-        labels.append(label)  # Append the labels to a list
-        processed_ids.append(id)
-        status_update(encoded_label)  # Status update
-
-        if batch_index == batch:
+        try:
+            label = binary_labels[encoded_label]  # Decode the label
+        except:
             write_to_file(processed_ids, labels)
-            batch_index = 0
+            sys.exit()
+        if label != ignore_class and label != 'Ignore':
+            labels.append(label)  # Append the labels to a list
+            processed_ids.append(id)
+            status_update(encoded_label)  # Status update
+            place_image_in_subdirectory(label, id)  # Format image directory sub-structure
 
-        batch_index += 1
 
-    write_to_file(ids, labels)
+def place_image_in_subdirectory(label: str, id):
+    current_dir = root_path + '/' + data_path + 'labelled/' + str(id) + '.jpg'
+
+    test_dir = root_path + '/' + data_path + 'labelled/test/' + label + '/' + label + '_image_' + str(id) + '.jpg'
+    sub_dir = root_path + '/' + data_path + 'labelled/' + label + '/' + label + '_image_' + str(id) + '.jpg'
+
+    rand_value =  random.uniform(0, 1)
+    if rand_value > test_split:
+        shutil.move(current_dir, sub_dir)
+    else:
+        shutil.move(current_dir, test_dir)
 
 
 def status_update(encoded_label: int):
