@@ -1,0 +1,423 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="code/">
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>Binary Image Labelling</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#binary-image-labelling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Binary Image Labelling" class="md-header__button md-logo" aria-label="Binary Image Labelling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Binary Image Labelling
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Binary Image Labelling" class="md-nav__button md-logo" aria-label="Binary Image Labelling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Binary Image Labelling
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Home
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    Use Cases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    How to use
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-extras" class="md-nav__link">
+    Useful Extras
+  </a>
+  
+    <nav class="md-nav" aria-label="Useful Extras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-an-image-you-are-unsure-of" class="md-nav__link">
+    Ignoring an image you are unsure of
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-a-class" class="md-nav__link">
+    Ignoring a class
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code/" class="md-nav__link">
+        Code Documentation
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    Use Cases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    How to use
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-extras" class="md-nav__link">
+    Useful Extras
+  </a>
+  
+    <nav class="md-nav" aria-label="Useful Extras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-an-image-you-are-unsure-of" class="md-nav__link">
+    Ignoring an image you are unsure of
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-a-class" class="md-nav__link">
+    Ignoring a class
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="binary-image-labelling">Binary Image Labelling</h1>
+<p>A simple binary labelling processor for iNaturalist observation images. </p>
+<h2 id="use-cases">Use Cases</h2>
+<p>The thesis study initially made use of this repository to explore the possibility of using binary 
+labelling to train a image classification model capable of classifying the quality of an image, 
+or the possibly of classifying whether an animal was present or absent within an image. </p>
+<p>The quality or the presence labelled images were not required in the thesis due to the use of the 
+<a href="https://github.com/microsoft/CameraTraps/blob/main/megadetector.md">Mega-detector</a> YOLO5 object-detection model.</p>
+<p>It could be used to supplement the model by evaluating the sub-images as <code>good</code> or <code>bad</code> quality. 
+As with classification models "trash in = trash out". Unfortunately the time constraints of the thesis meant this possibility
+was not utilized within the study. But the repository is created to help those needing an efficient system of binary labelling images. </p>
+<h2 id="how-to-use">How to use</h2>
+<p>Please perform the following steps in order to use the Binary Labeller:
+1. Please ensure the images you wish to label are within the <code>data/images/</code> directory.
+2. Please specify the labels to be used in line 25</p>
+<pre><code>{49: &lt;Positive label&gt;, 48: &lt;Negative label&gt;, 32: 'Ignore'} 
+</code></pre>
+<p>An example is provided below for the Present/ Absent scenario:</p>
+<pre><code>{49: 'Present', 48: 'Absent', 32: 'Ignore'} 
+</code></pre>
+<ol>
+<li>Please specify the name of the file recording the labels for each image. This is on line 20</li>
+</ol>
+<pre><code>labelled_file = &lt;file_name&gt;.csv
+</code></pre>
+<p>An example for the wildlife presence is below:</p>
+<pre><code>labelled_file = 'wildlife_presence.csv'
+</code></pre>
+<ol>
+<li>Execute the script</li>
+<li>The image will be displayed. Select <code>1</code> if it fits your positive class. Select <code>0</code> if it fits your negative class.<ul>
+<li>The next image will be displayed straight after you have decided your label.</li>
+</ul>
+</li>
+<li>To exit the program click any buttion (Not <code>1</code>, <code>0</code>, or spacebar)</li>
+<li>The images have been placed in the binary directories in <code>data/labelled/images/</code> and also recorded in the <code>&lt;file name&gt;.csv</code> in <code>data/labelled/</code>.</li>
+</ol>
+<h2 id="useful-extras">Useful Extras</h2>
+<h3 id="ignoring-an-image-you-are-unsure-of">Ignoring an image you are unsure of</h3>
+<p>If an image if displayed where you are unsure of the binary class, an <strong>Ignore</strong> feature has been included.
+Simply press the <strong>spacebar</strong> key and the image will be skipped. It will not be added to the labelling history nor the binary repositories.</p>
+<h3 id="ignoring-a-class">Ignoring a class</h3>
+<p>If your dataset is imbalanced and you are attempting to even the binary labels.
+Specify on line 32, the name of the class you wish to ignore. Continue labelling as normal, this class
+will simply not be recorded.</p>
+<p>Example of the wildlife presence, where wildlife is present a lot more that absent.</p>
+<pre><code>ignore_class = 'Present'
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

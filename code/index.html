@@ -1,0 +1,1510 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>Code Documentation - Binary Image Labelling</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#code-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Binary Image Labelling" class="md-header__button md-logo" aria-label="Binary Image Labelling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Binary Image Labelling
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Code Documentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Binary Image Labelling" class="md-nav__button md-logo" aria-label="Binary Image Labelling" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Binary Image Labelling
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Code Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Code Documentation
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.aggregate_datasets" class="md-nav__link">
+    aggregate_datasets()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.avoid_duplicate_images" class="md-nav__link">
+    avoid_duplicate_images()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.copy_to_labelled_images" class="md-nav__link">
+    copy_to_labelled_images()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.display_image" class="md-nav__link">
+    display_image()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.labelling_process" class="md-nav__link">
+    labelling_process()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.remove_already_processed_observations" class="md-nav__link">
+    remove_already_processed_observations()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.status_update" class="md-nav__link">
+    status_update()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.update_binary_counts" class="md-nav__link">
+    update_binary_counts()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.write_to_file" class="md-nav__link">
+    write_to_file()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.aggregate_datasets" class="md-nav__link">
+    aggregate_datasets()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.avoid_duplicate_images" class="md-nav__link">
+    avoid_duplicate_images()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.copy_to_labelled_images" class="md-nav__link">
+    copy_to_labelled_images()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.display_image" class="md-nav__link">
+    display_image()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.labelling_process" class="md-nav__link">
+    labelling_process()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.remove_already_processed_observations" class="md-nav__link">
+    remove_already_processed_observations()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.status_update" class="md-nav__link">
+    status_update()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.update_binary_counts" class="md-nav__link">
+    update_binary_counts()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main.write_to_file" class="md-nav__link">
+    write_to_file()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="code-documentation">Code Documentation</h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+<a id="main"></a>
+  <div class="doc doc-contents first">
+  
+      <p>This file performs the binary image labelling.</p>
+<p>The file allows you to tailor the binary image labelling to suite the use case by adapting specific variables.
+Please consult the README or Documentation for further information.</p>
+
+  <p><strong>Attributes:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>root_path</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The absolute path of the project root.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>data_path</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The complete path (absolute + relative) to the project <code>data</code> directory</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>observation_path</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The complete path to the <code>data/observations/</code> directory. This directory contains the iNaturalist observations.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>labelled_path</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The complete path to the <code>data/labelled/</code> directory. This directory contains a record of the labelled observations.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>labelled_file</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The filename of where the labelling history is going to be collected.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>image_path</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The complete path to where the images to be labelled are found.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>labelled_image_path</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The complete path to the directory where the labelled images are saved in binary directories to seperate the classes after being labelled.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>binary_labels</code></td>
+          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Linking of the numerical key values to the expected labels. An <code>ignore</code> label is also provided.</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>positive_count</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The count of the number of positive labels recorded</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>negative_count</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The count of the number of negative labels recorded</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code>ignore_class</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The variable enables specification of a class to ignore recording labels for. Review the README or documentation for more information.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="main.aggregate_datasets" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">aggregate_datasets</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>This method aggregates the specified dataset list into a single dataframe for further use.</p>
+<p>Note, this method can be used if the user requires the images to be matched to a dataset.
+In the current format, the labelling process only requires the images. This method is in place to offer the
+capability to extend the labelling process if required.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>datasets</code></td>
+          <td>
+                <code>list</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A list of dataset file names. These will be aggregated into a single dataframe.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>DataFrame</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A single dataframe comprising the aggregated datasets.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>main.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">aggregate_datasets</span><span class="p">(</span><span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method aggregates the specified dataset list into a single dataframe for further use.</span>
+
+<span class="sd">    Note, this method can be used if the user requires the images to be matched to a dataset.</span>
+<span class="sd">    In the current format, the labelling process only requires the images. This method is in place to offer the</span>
+<span class="sd">    capability to extend the labelling process if required.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        datasets (list): A list of dataset file names. These will be aggregated into a single dataframe.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): A single dataframe comprising the aggregated datasets.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>  <span class="c1"># Iterate through the datasets</span>
+        <span class="n">current_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">observation_path</span> <span class="o">+</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Read in the currrent dataset as a dataframe</span>
+
+        <span class="n">current_df</span> <span class="o">=</span> <span class="n">current_df</span><span class="p">[</span><span class="n">current_df</span><span class="p">[</span><span class="s1">&#39;taxon_species_name&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Felis catus&#39;</span><span class="p">]</span>  <span class="c1"># Apply known Felis catus restriction</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">current_df</span><span class="p">],</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Concatenate the dataframes</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="main.avoid_duplicate_images" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">avoid_duplicate_images</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>This method removes images from filenames, that have already been processed to avoid repeated work.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>filenames</code></td>
+          <td>
+                <code>list</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The list of all image filenames to be labelled.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>list</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A list of filenames, with those already labelled removed.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>main.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">avoid_duplicate_images</span><span class="p">(</span><span class="n">filenames</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method removes images from filenames, that have already been processed to avoid repeated work.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filenames (list): The list of all image filenames to be labelled.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (list): A list of filenames, with those already labelled removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">labelled_path</span> <span class="o">+</span> <span class="n">labelled_file</span><span class="p">):</span>
+        <span class="n">df_labelled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">labelled_path</span> <span class="o">+</span> <span class="n">labelled_file</span><span class="p">)</span>  <span class="c1"># Read in the labelled dataset</span>
+        <span class="n">labelled_images</span> <span class="o">=</span> <span class="n">df_labelled</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  <span class="c1"># Generate a list of id&#39;s in the labelled dataset</span>
+        <span class="n">filenames</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">labelled_images</span><span class="p">,</span> <span class="n">filenames</span><span class="p">)</span>  <span class="c1"># Filter out already labelled images</span>
+        <span class="n">update_binary_counts</span><span class="p">(</span><span class="n">df_labelled</span><span class="p">)</span>  <span class="c1"># Update the positive and negative counts</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">labelled_path</span> <span class="o">+</span> <span class="n">labelled_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>  <span class="c1"># Create an empty file if it doesn&#39;t exist</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;id,label</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filenames</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="main.copy_to_labelled_images" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">copy_to_labelled_images</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>This method copies the labelled image to the corresponding directory within <code>data/labelled/images/</code></p>
+<p>Note, the binary directories will be created automatically based on the categorical names provided in the code.
+In the end, the <code>data/labelled/images/</code> directory will contain two additional directories housing images of each class.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>filename</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The name of the file to be copied into the labelled images directory.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>label</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The corresponding categorical label of the image.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>main.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">copy_to_labelled_images</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method copies the labelled image to the corresponding directory within `data/labelled/images/`</span>
+
+<span class="sd">    Note, the binary directories will be created automatically based on the categorical names provided in the code.</span>
+<span class="sd">    In the end, the `data/labelled/images/` directory will contain two additional directories housing images of each class.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filename (str): The name of the file to be copied into the labelled images directory.</span>
+<span class="sd">        label (str): The corresponding categorical label of the image.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file_origin</span> <span class="o">=</span> <span class="n">image_path</span> <span class="o">+</span> <span class="n">filename</span>
+    <span class="n">file_destination_directory</span> <span class="o">=</span> <span class="n">labelled_image_path</span> <span class="o">+</span> <span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">file_destination</span> <span class="o">=</span> <span class="n">file_destination_directory</span> <span class="o">+</span> <span class="n">filename</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_destination_directory</span><span class="p">):</span>  <span class="c1"># If the directory doesn&#39;t exist, then make the directory</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">file_destination_directory</span><span class="p">)</span>
+
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">file_origin</span><span class="p">,</span> <span class="n">file_destination</span><span class="p">)</span>  <span class="c1"># Copy the file from the origin directory into the newly specified directory.</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="main.display_image" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">display_image</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>This method displays the image specified by the filename.</p>
+<p>The filename of the image is assumed to be located in the <code>data/images/</code> directory.
+The image display will close upon the click of the button to label the image.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>filename</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The file name of the image to be displayed.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>An integer encoding of the key pressed.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>main.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">display_image</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method displays the image specified by the filename.</span>
+
+<span class="sd">    The filename of the image is assumed to be located in the `data/images/` directory.</span>
+<span class="sd">    The image display will close upon the click of the button to label the image.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filename (str): The file name of the image to be displayed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (int): An integer encoding of the key pressed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;Current image&#39;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="n">key_pressed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">key_pressed</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="main.labelling_process" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">labelling_process</span><span class="p">()</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>This method controls the image labelling process.</p>
+<p>In summary, the process is as follows:
+The <code>data/images/</code> directory holds all of the images to be labelled.
+A check is conducted to ensure no images are repeatedly labelled.
+Each image is labelled, the image is copied into a corresponding directory.
+A history of each image filename and its corresponding label is maintained.</p>
+<p>As a result, there exists a <code>labelled_file.csv</code> containing the labelling history.
+Additionally, within the <code>data/labelled/images/</code> directory there exist two directories housing the binary labelled images.</p>
+
+      <details class="quote">
+        <summary>Source code in <code>main.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">labelling_process</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method controls the image labelling process.</span>
+
+<span class="sd">    In summary, the process is as follows:</span>
+<span class="sd">    The `data/images/` directory holds all of the images to be labelled.</span>
+<span class="sd">    A check is conducted to ensure no images are repeatedly labelled.</span>
+<span class="sd">    Each image is labelled, the image is copied into a corresponding directory.</span>
+<span class="sd">    A history of each image filename and its corresponding label is maintained.</span>
+
+<span class="sd">    As a result, there exists a `labelled_file.csv` containing the labelling history.</span>
+<span class="sd">    Additionally, within the `data/labelled/images/` directory there exist two directories housing the binary labelled images.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filenames</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>  <span class="c1"># Gather filenames from image directory. It is assumed the filenames are the ID&#39;s</span>
+    <span class="n">filenames</span> <span class="o">=</span> <span class="n">avoid_duplicate_images</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>  <span class="c1"># avoid already labelled images</span>
+
+    <span class="n">labelled_files</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Storing the labelled files</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Storing the labels</span>
+
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="n">encoded_key</span> <span class="o">=</span> <span class="n">display_image</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">binary_labels</span><span class="p">[</span><span class="n">encoded_key</span><span class="p">]</span>  <span class="c1"># Decode the label</span>
+
+            <span class="k">if</span> <span class="n">label</span> <span class="o">!=</span> <span class="n">ignore_class</span> <span class="ow">and</span> <span class="n">label</span> <span class="o">!=</span> <span class="s1">&#39;Ignore&#39;</span><span class="p">:</span>  <span class="c1"># If the label isn&#39;s specified as the ignore class and its not the Ignore label</span>
+                <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+                <span class="n">labelled_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+                <span class="n">status_update</span><span class="p">(</span><span class="n">encoded_key</span><span class="p">)</span>  <span class="c1"># Binary count update</span>
+                <span class="n">copy_to_labelled_images</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>  <span class="c1"># Copy image to data/labelled/images</span>
+
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">write_to_file</span><span class="p">(</span><span class="n">labelled_files</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>  <span class="c1"># Write the labelling history on exit.</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="main.remove_already_processed_observations" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">remove_already_processed_observations</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>This method removes the already labelled observations from the dataset.</p>
+<p>The method accesses the already labelled dataset and extracts the unique observation IDs.
+It removes the IDs if they are present in the current dataset to avoid repetition.</p>
+<p>Additionally, the method updates the positive and negative counts to keep track of the number of each binary label in the
+labelled dataset.</p>
+<p>Note, this method can be used if the user requires the images to be matched to a dataset.
+In the current format, the labelling process only requires the images. This method is in place to offer the
+capability to extend the labelling process if required.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>df</code></td>
+          <td>
+                <code>DataFrame</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The current dataset to still be labelled.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>DataFrame</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The dataframe is returned with already labelled observations removed from it.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>main.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">remove_already_processed_observations</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method removes the already labelled observations from the dataset.</span>
+
+<span class="sd">    The method accesses the already labelled dataset and extracts the unique observation IDs.</span>
+<span class="sd">    It removes the IDs if they are present in the current dataset to avoid repetition.</span>
+
+<span class="sd">    Additionally, the method updates the positive and negative counts to keep track of the number of each binary label in the</span>
+<span class="sd">    labelled dataset.</span>
+
+<span class="sd">    Note, this method can be used if the user requires the images to be matched to a dataset.</span>
+<span class="sd">    In the current format, the labelling process only requires the images. This method is in place to offer the</span>
+<span class="sd">    capability to extend the labelling process if required.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (DataFrame): The current dataset to still be labelled.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): The dataframe is returned with already labelled observations removed from it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">labelled_path</span> <span class="o">+</span> <span class="n">labelled_file</span><span class="p">):</span>
+        <span class="n">df_labelled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">labelled_path</span> <span class="o">+</span> <span class="n">labelled_file</span><span class="p">)</span>  <span class="c1"># Read in the labelled dataset</span>
+        <span class="n">labelled_ids</span> <span class="o">=</span> <span class="n">df_labelled</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  <span class="c1"># Generate a list of id&#39;s in the labelled dataset</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labelled_ids</span><span class="p">)</span>  <span class="c1"># From the current dataset, drop the rows with the same id (id is the index).</span>
+
+        <span class="n">update_binary_counts</span><span class="p">(</span><span class="n">df_labelled</span><span class="p">)</span>  <span class="c1"># Update the binary counts</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">labelled_path</span> <span class="o">+</span> <span class="n">labelled_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>  <span class="c1"># Create an empty file if it doesn&#39;t exist</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;id,label</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="main.status_update" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">status_update</span><span class="p">(</span><span class="n">encoded_key</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>This method updates the binary counts and displays the current counts to the terminal</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>encoded_key</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The encode key value (numerical representation of the key pressed)</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>main.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">status_update</span><span class="p">(</span><span class="n">encoded_key</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method updates the binary counts and displays the current counts to the terminal</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        encoded_key (int): The encode key value (numerical representation of the key pressed)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">positive_count</span><span class="p">,</span> <span class="n">negative_count</span>
+
+    <span class="k">if</span> <span class="n">encoded_key</span> <span class="o">==</span> <span class="mi">49</span><span class="p">:</span>  <span class="c1"># Positive encoding</span>
+        <span class="n">positive_count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">encoded_key</span> <span class="o">==</span> <span class="mi">48</span><span class="p">:</span>  <span class="c1"># Negative encoding</span>
+        <span class="n">negative_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">binary_labels</span><span class="p">[</span><span class="mi">49</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; count: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">positive_count</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span>
+          <span class="n">binary_labels</span><span class="p">[</span><span class="mi">48</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; count: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">negative_count</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="main.update_binary_counts" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">update_binary_counts</span><span class="p">(</span><span class="n">df_labelled</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>This method updates the binary counts based on the already labelled data.</p>
+<p>This method updates the global binary counts of the file.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>df_labelled</code></td>
+          <td>
+                <code>DataFrame</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The dataframe containing the already labelled observations.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>main.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_binary_counts</span><span class="p">(</span><span class="n">df_labelled</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method updates the binary counts based on the already labelled data.</span>
+
+<span class="sd">    This method updates the global binary counts of the file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df_labelled (DataFrame): The dataframe containing the already labelled observations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">positive_count</span><span class="p">,</span> <span class="n">negative_count</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">df_labelled</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>  <span class="c1"># Update the binary label counts if the file is not empty</span>
+        <span class="n">counts</span> <span class="o">=</span> <span class="n">df_labelled</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>  <span class="c1"># Convert counts to a dictionary</span>
+
+        <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>  <span class="c1"># Label matching to update counts</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="n">binary_labels</span><span class="p">[</span><span class="mi">49</span><span class="p">]:</span>
+                <span class="n">positive_count</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">label</span> <span class="o">==</span> <span class="n">binary_labels</span><span class="p">[</span><span class="mi">48</span><span class="p">]:</span>
+                <span class="n">negative_count</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="main.write_to_file" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">write_to_file</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>This method writes the labelled files and their corresponding labels to the <code>labelled_file</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>filenames</code></td>
+          <td>
+                <code>list</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A list of filenames with the corresponding labels in the same order as the labels list.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>labels</code></td>
+          <td>
+                <code>list</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The categorical labels of the images.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>main.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">write_to_file</span><span class="p">(</span><span class="n">filenames</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method writes the labelled files and their corresponding labels to the `labelled_file`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filenames (list): A list of filenames with the corresponding labels in the same order as the labels list.</span>
+<span class="sd">        labels (list): The categorical labels of the images.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">filenames</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">labels</span><span class="p">})</span>
+    <span class="n">results_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">labelled_path</span> <span class="o">+</span> <span class="n">labelled_file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
