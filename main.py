@@ -1,5 +1,12 @@
+"""
+    Attributes:
+        root_path (str): The absolute path of the project root.
+        data_path (str): The complete path (absolute + relative) to the project `data` directory
+        observation_path (str) The complete path to the `data/observations/` directory. This directory contains the iNaturalist observations.
+        labelled_path (str): The complete path to the `data/labelled/` directory. This directory contains a record of the labelled observations.
+"""
+
 import pandas as pd
-import numpy as np
 import requests
 import cv2
 import shutil
@@ -11,10 +18,11 @@ import os
 root_path = sys.path[1]
 data_path = root_path + "/data/"
 observation_path = data_path + "observations/"
+labelled_path = data_path + "labelled/"
+labelled_file = 'wildlife_presence.csv'
 
 
-binary_labels = {49: 'Present', 48: 'Absent', 32: 'Ignore'}
-file_name = 'wildlife_presence.csv'
+binary_labels = {49: 'Present', 48: 'Absent', 32: 'Ignore'}  # Feel free to changes the label names to suit the needs of the binary labelled.
 data_path = 'data/'
 
 positive_count = 0
@@ -43,30 +51,60 @@ def aggregate_datasets(datasets: list) -> pd.DataFrame:
     return df
 
 
-def generate_url_id_combinations(df: pd.DataFrame):
-    ids = df.index.tolist()
-    urls = df['image_url'].tolist()
-    return ids, urls
-
-
 def remove_already_processed_observations(df: pd.DataFrame):
-    global positive_count, negative_count
-    df_labelled = pd.read_csv(data_path + 'labelled/' + file_name)
-    print(df_labelled.head())
-    labelled_ids = df_labelled['id'].tolist()
-    df = df.drop(labelled_ids)
+    """This method removes the already labelled observations from the dataset.
 
-    # Update the positve and negative counts
-    if not df_labelled.empty:
-        counts = df_labelled['label'].value_counts().to_dict()
-        for label in counts.keys():
+    The method accesses the already labelled dataset and extracts the unique observation IDs.
+    It removes the IDs if they are present in the current dataset to avoid repetition.
+
+    Additionally, the method updates the positive and negative counts to keep track of the number of each binary label in the
+    labelled dataset.
+
+    Args:
+        df (DataFrame): The current dataset to still be labelled.
+
+    Returns:
+        (DataFrame): The dataframe is returned with already labelled observations removed from it.
+    """
+
+    if os.path.exists(labelled_path + labelled_file):
+        df_labelled = pd.read_csv(labelled_path + labelled_file)  # Read in the labelled dataset
+        labelled_ids = df_labelled['id'].tolist()  # Generate a list of id's in the labelled dataset
+        df = df.drop(labelled_ids)  # From the current dataset, drop the rows with the same id (id is the index).
+
+        update_binary_counts(df_labelled)  # Update the binary counts
+    else:
+        with open(labelled_path + labelled_file, 'w') as file:  # Create an empty file if it doesn't exist
+            file.write("id,label")
+
+    return df
+
+
+def update_binary_counts(df_labelled: pd.DataFrame):
+    """This method updates the binary counts based on the already labelled data.
+
+    This method updates the global binary counts of the file.
+
+    Args:
+        df_labelled (DataFrame): The dataframe containing the already labelled observations.
+    """
+    global positive_count, negative_count
+
+    if not df_labelled.empty:  # Update the binary label counts if the file is not empty
+        counts = df_labelled['label'].value_counts().to_dict()  # Convert counts to a dictionary
+
+        for label in counts.keys():  # Label matching to update counts
             if label == binary_labels[49]:
                 positive_count = counts[label]
             elif label == binary_labels[48]:
                 negative_count = counts[label]
 
-    return df
 
+
+def generate_url_id_combinations(df: pd.DataFrame):
+    ids = df.index.tolist()
+    urls = df['image_url'].tolist()
+    return ids, urls
 
 def process(ids, urls):
 
@@ -133,7 +171,8 @@ if __name__ == "__main__":
     datasets = ['proboscidia_train.csv', 'felids_train.csv']  # Specify the datasets
     df = aggregate_datasets(datasets)  # Aggregate datasets together.
 
-    # df = remove_already_processed_observations(df)
+    df = remove_already_processed_observations(df)  # Remove already labelled observations
+
     # Shuffle rows
     # df = df.sample(frac=1)
     #
