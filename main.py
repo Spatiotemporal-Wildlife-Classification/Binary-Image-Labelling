@@ -12,9 +12,6 @@ import shutil
 import sys
 import os
 
-# Flags
-sub_images = True
-
 # Paths
 root_path = sys.path[1]
 data_path = root_path + "/data/"
@@ -24,12 +21,14 @@ labelled_file = 'wildlife_presence.csv'
 image_path = data_path + "/images/"
 labelled_image_path = labelled_path + "images/"
 
-
-
+# Label info
 binary_labels = {49: 'Present', 48: 'Absent', 32: 'Ignore'}  # Feel free to changes the label names to suit the needs of the binary labelled.
 
+# Binary counts
 positive_count = 0
 negative_count = 0
+
+# Ignoring class
 ignore_class = ''
 
 
