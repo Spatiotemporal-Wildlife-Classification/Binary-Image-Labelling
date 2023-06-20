@@ -7,10 +7,15 @@ import sys
 import random
 import os
 
+# Paths
+root_path = sys.path[1]
+data_path = root_path + "/data/"
+observation_path = data_path + "observations/"
+
+
 binary_labels = {49: 'Present', 48: 'Absent', 32: 'Ignore'}
 file_name = 'wildlife_presence.csv'
 data_path = 'data/'
-root_path = sys.path[1]
 
 positive_count = 0
 negative_count = 0
@@ -19,14 +24,22 @@ ignore_class = ''
 test_split = 0.2
 
 
-# Aggregate multiple datasets
+
 def aggregate_datasets(datasets: list) -> pd.DataFrame:
+    """This method aggregates the specified dataset list into a single dataframe for further use.
+
+    Args:
+        datasets (list): A list of dataset file names. These will be aggregated into a single dataframe.
+
+    Returns:
+        (DataFrame): A single dataframe comprising the aggregated datasets.
+    """
     df = pd.DataFrame()
-    for dataset in datasets:
-        current_df = pd.read_csv(data_path + 'raw/' + dataset, index_col=0)
-        current_df = current_df[current_df['taxon_species_name'] != 'Felis catus']
-        df = pd.concat([df, current_df],
-                       sort=False)
+    for dataset in datasets:  # Iterate through the datasets
+        current_df = pd.read_csv(observation_path + dataset, index_col=0)  # Read in the currrent dataset as a dataframe
+
+        current_df = current_df[current_df['taxon_species_name'] != 'Felis catus']  # Apply known Felis catus restriction
+        df = pd.concat([df, current_df], sort=False)  # Concatenate the dataframes
     return df
 
 
@@ -117,14 +130,15 @@ def download_image(id: str, url: str):
 
 
 if __name__ == "__main__":
-    # Import dataframe
-    df = aggregate_datasets(['proboscidia_final.csv', 'felids_final.csv'])
-    df = remove_already_processed_observations(df)
+    datasets = ['proboscidia_train.csv', 'felids_train.csv']  # Specify the datasets
+    df = aggregate_datasets(datasets)  # Aggregate datasets together.
+
+    # df = remove_already_processed_observations(df)
     # Shuffle rows
-    df = df.sample(frac=1)
-
-    # Generate id and url list
-    ids, urls = generate_url_id_combinations(df)
-
-    # Activate process
-    process(ids, urls)
+    # df = df.sample(frac=1)
+    #
+    # # Generate id and url list
+    # ids, urls = generate_url_id_combinations(df)
+    #
+    # # Activate process
+    # process(ids, urls)
