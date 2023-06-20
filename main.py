@@ -1,9 +1,21 @@
-"""
+"""This file performs the binary image labelling.
+
+    The file allows you to tailor the binary image labelling to suite the use case by adapting specific variables.
+    Please consult the README or Documentation for further information.
+
+
     Attributes:
         root_path (str): The absolute path of the project root.
         data_path (str): The complete path (absolute + relative) to the project `data` directory
-        observation_path (str) The complete path to the `data/observations/` directory. This directory contains the iNaturalist observations.
+        observation_path (str): The complete path to the `data/observations/` directory. This directory contains the iNaturalist observations.
         labelled_path (str): The complete path to the `data/labelled/` directory. This directory contains a record of the labelled observations.
+        labelled_file (str): The filename of where the labelling history is going to be collected.
+        image_path (str): The complete path to where the images to be labelled are found.
+        labelled_image_path (str): The complete path to the directory where the labelled images are saved in binary directories to seperate the classes after being labelled.
+        binary_labels (dict): Linking of the numerical key values to the expected labels. An `ignore` label is also provided.
+        positive_count (int): The count of the number of positive labels recorded
+        negative_count (int): The count of the number of negative labels recorded
+        ignore_class (str): The variable enables specification of a class to ignore recording labels for. Review the README or documentation for more information.
 """
 
 import pandas as pd
@@ -173,7 +185,8 @@ def avoid_duplicate_images(filenames: list):
     if os.path.exists(labelled_path + labelled_file):
         df_labelled = pd.read_csv(labelled_path + labelled_file)  # Read in the labelled dataset
         labelled_images = df_labelled['id'].tolist()  # Generate a list of id's in the labelled dataset
-        filenames = filter(lambda i: i not in labelled_images, filenames)
+        filenames = filter(lambda i: i not in labelled_images, filenames)  # Filter out already labelled images
+        update_binary_counts(df_labelled)  # Update the positive and negative counts
     else:
         with open(labelled_path + labelled_file, 'w') as file:  # Create an empty file if it doesn't exist
             file.write("id,label\n")
