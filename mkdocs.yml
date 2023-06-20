@@ -1,0 +1,12 @@
+site_name: Binary Image Labelling
+
+theme:
+  name: "material"
+
+plugins:
+- mkdocstrings:
+    default_handler: python
+
+nav:
+  - Home: index.md
+  - Code Documentation: code.md

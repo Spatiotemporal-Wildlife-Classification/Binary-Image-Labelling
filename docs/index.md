@@ -17,22 +17,28 @@ was not utilized within the study. But the repository is created to help those n
 Please perform the following steps in order to use the Binary Labeller:
 1. Please ensure the images you wish to label are within the `data/images/` directory.
 2. Please specify the labels to be used in line 25
-    ```angular2html
-    {49: <Positive label>, 48: <Negative label>, 32: 'Ignore'} 
-    ```
+
+```
+{49: <Positive label>, 48: <Negative label>, 32: 'Ignore'} 
+```
     
-    An example is provided below for the Present/ Absent scenario:
-    ```angular2html
-    {49: 'Present', 48: 'Absent', 32: 'Ignore'} 
-    ```
+An example is provided below for the Present/ Absent scenario:
+
+```
+{49: 'Present', 48: 'Absent', 32: 'Ignore'} 
+```
+
 3. Please specify the name of the file recording the labels for each image. This is on line 20
-    ```angular2html
-    labelled_file = <file_name>.csv
-    ```
-     An example for the wildlife presence is below:
-     ```
-    labelled_file = 'wildlife_presence.csv'
-     ```
+
+```
+labelled_file = <file_name>.csv
+```
+
+An example for the wildlife presence is below:
+
+```
+labelled_file = 'wildlife_presence.csv'
+```
 
 4. Execute the script
 5. The image will be displayed. Select `1` if it fits your positive class. Select `0` if it fits your negative class.
@@ -53,6 +59,7 @@ Specify on line 32, the name of the class you wish to ignore. Continue labelling
 will simply not be recorded.
 
 Example of the wildlife presence, where wildlife is present a lot more that absent.
-```angular2html
+```
 ignore_class = 'Present'
 ```
+
